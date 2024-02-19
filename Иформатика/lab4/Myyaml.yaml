@@ -1,0 +1,157 @@
+schedule:
+  pair:
+  - lecturer:
+      lastname: Валерьевич
+      name: Павел
+      surname: Балакшин
+    name: Информатика
+    place:
+      body: zoom
+      room: zoom
+    time:
+      end: '9:50'
+      start: '8:20'
+    type: Лекция
+    visit: distanse
+    weeks:
+      week: '5'
+  - lecturer:
+      lastname: Валерьевич
+      name: Павел
+      surname: Балакшин
+    name: Информатика
+    place:
+      body: lomo
+      room: Актовый зал
+    time:
+      end: '9:50'
+      start: '8:20'
+    type: Лекция
+    visit: fulltime
+    weeks:
+      week:
+      - '3'
+      - '7'
+      - '9'
+      - '11'
+      - '13'
+      - '15'
+      - '17'
+  - lecturer:
+      lastname: Викторович
+      name: Сергей
+      surname: Клименков
+    name: ОСНОВЫ ПРОФЕССИОНАЛЬНОЙ ДЕЯТЕЛЬНОСТИ
+    place:
+      body: lomo
+      room: Актовый зал
+    time:
+      end: '11:30'
+      start: '10:00'
+    type: Лекция
+    visit: fulltime
+    weeks:
+      week:
+      - '3'
+      - '7'
+      - '9'
+      - '11'
+      - '13'
+      - '15'
+      - '17'
+  - lecturer:
+      lastname: Мерабиевна
+      name: Нино
+      surname: Ткешелашвили
+    name: ОСНОВЫ ПРОФЕССИОНАЛЬНОЙ ДЕЯТЕЛЬНОСТИ
+    place:
+      body: kronva
+      room: '2306'
+    time:
+      end: '11:30'
+      start: '10:00'
+    type: Лаба
+    visit: fulltime
+    weeks:
+      week:
+      - '2'
+      - '4'
+      - '6'
+      - '8'
+      - '10'
+      - '12'
+      - '16'
+  - lecturer:
+      lastname: Викторович
+      name: Сергей
+      surname: Клименков
+    name: ОСНОВЫ ПРОФЕССИОНАЛЬНОЙ ДЕЯТЕЛЬНОСТИ
+    place:
+      body: zoom
+      room: zoom
+    time:
+      end: '11:30'
+      start: '10:00'
+    type: Лекция
+    visit: distanse
+    weeks:
+      week: '5'
+  - lecturer:
+      lastname: Евгеньевич
+      name: Алексей
+      surname: Письмак
+    name: ПРОГРАММИРОВАНИЕ
+    place:
+      body: lomo
+      room: '1328'
+    time:
+      end: '13:10'
+      start: '11:40'
+    type: Лекция
+    visit: fulltime
+    weeks:
+      week:
+      - '3'
+      - '7'
+      - '9'
+      - '11'
+      - '13'
+      - '15'
+      - '17'
+  - lecturer:
+      lastname: Евгеньевич
+      name: Алексей
+      surname: Письмак
+    name: ПРОГРАММИРОВАНИЕ
+    place:
+      body: zoom
+      room: zoom
+    time:
+      end: '13:10'
+      start: '11:40'
+    type: Лекция
+    visit: fulltime
+    weeks:
+      week: '5'
+  - lecturer:
+      lastname: Вадимович
+      name: Иван
+      surname: Остапенко
+    name: ОСНОВЫ ПРОФЕССИОНАЛЬНОЙ ДЕЯТЕЛЬНОСТИ
+    place:
+      body: kronva
+      room: '2306'
+    time:
+      end: '13:10'
+      start: '11:40'
+    type: Лаба
+    visit: fulltime
+    weeks:
+      week:
+      - '2'
+      - '4'
+      - '6'
+      - '8'
+      - '10'
+      - '12'
+      - '16'
