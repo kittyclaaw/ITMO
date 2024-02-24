@@ -36,7 +36,7 @@ CREATE TYPE MEAL_COLOR AS ENUM(
     'белые'
     );
 
-CREATE TYPE MEAL_FROM AS ENUM(
+CREATE TYPE MEAL_FORM AS ENUM(
     'круглые'
     );
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS meal(
     conclusion_id INT REFERENCES conclusion(id),
     meal_name text NOT NULL,
     meal_color MEAL_COLOR,
-    meal_form MEAL_FROM,
+    meal_form MEAL_FORM,
     meal_density MEAL_DENSITY,
     meal_size MEAL_SIZE,
     meal_taste MEAL_TASTE
