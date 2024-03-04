@@ -1,7 +1,7 @@
 BEGIN;
 
 CREATE TYPE HUMAN_STATE AS ENUM(
-    'смотрящий'
+    'Смотрящий'
     );
 
 CREATE TYPE HUMAN_EYE_DIRECTION AS ENUM(
@@ -9,7 +9,7 @@ CREATE TYPE HUMAN_EYE_DIRECTION AS ENUM(
     );
 
 CREATE TYPE OBJECT_FORM AS ENUM(
-    'круг'
+    'Круг'
     );
 
 CREATE TYPE METHOD_LEVEL AS ENUM(
@@ -52,6 +52,13 @@ CREATE TYPE MEAL_TASTE AS ENUM(
     'очень вкусны'
     );
 
+CREATE TABLE IF NOT EXISTS method(
+    id SERIAL NOT NULL PRIMARY KEY,
+    method_level METHOD_LEVEL,
+    method_type METHOD_TYPE,
+    method_originality METHOD_ORIGINALITY
+);
+
 CREATE TABLE IF NOT EXISTS human(
     id SERIAL NOT NULL PRIMARY KEY,
     method_id INT REFERENCES method(id),
@@ -61,35 +68,28 @@ CREATE TABLE IF NOT EXISTS human(
 );
 
 CREATE TABLE IF NOT EXISTS object(
-    id SERIAL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     human_id INT REFERENCES human(id),
     object_name text NOT NULL,
     object_form OBJECT_FORM
 );
 
-CREATE TABLE IF NOT EXISTS method(
-    id SERIAL PRIMARY KEY,
-    method_level METHOD_LEVEL,
-    method_type METHOD_TYPE,
-    method_originality METHOD_ORIGINALITY
-);
-
 CREATE TABLE IF NOT EXISTS conclusion(
-    id SERIAL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     method_id INT REFERENCES method(id),
     conclusion_time CONCLUSION_TIME,
     conclusion_result BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS verification(
-    id SERIAL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     conclusion_id INT REFERENCES conclusion(id),
     verification_time VERIFICATION_TIME,
     verification_state BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS meal(
-    id SERIAL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     conclusion_id INT REFERENCES conclusion(id),
     meal_name text NOT NULL,
     meal_color MEAL_COLOR,
@@ -100,14 +100,14 @@ CREATE TABLE IF NOT EXISTS meal(
 );
 
 CREATE TABLE IF NOT EXISTS disease(
-    id SERIAL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     meal_id INT REFERENCES meal(id),
     disease_name text NOT NULL,
     disease_state BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS question(
-    id SERIAL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
     meal_id INT REFERENCES meal(id),
     question_text text NOT NULL
 );
@@ -131,9 +131,9 @@ INSERT INTO meal(conclusion_id, meal_name, meal_color, meal_form, meal_density, 
     VALUES ('1', 'голыши', 'белые', 'круглые', 'мягкие', 'большой', 'очень вкусны');
 
 INSERT INTO disease(meal_id, disease_name, disease_state)
-    VALUES ('1', '', '');
+    VALUES ('1', 'unk', FALSE);
 
 INSERT INTO question(meal_id, question_text)
-    VALUES ('1', '');
+    VALUES ('1', 'Может быть, и этот, большой, тоже?..');
 
 COMMIT;
