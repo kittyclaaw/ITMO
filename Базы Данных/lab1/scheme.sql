@@ -1,90 +1,38 @@
 BEGIN;
 
-CREATE TYPE HUMAN_STATE AS ENUM(
-    'Смотрящий'
-    );
-
-CREATE TYPE HUMAN_EYE_DIRECTION AS ENUM(
-    'на Луну'
-    );
-
-CREATE TYPE OBJECT_FORM AS ENUM(
-    'Круг'
-    );
-
-CREATE TYPE METHOD_LEVEL AS ENUM(
-    'первоклассную'
-    );
-
-CREATE TYPE METHOD_TYPE AS ENUM(
-    'абстрактного'
-    );
-
-CREATE TYPE METHOD_ORIGINALITY AS ENUM(
-    'поистине'
-    );
-
-CREATE TYPE CONCLUSION_TIME AS ENUM(
-    '3-4 минуты'
-    );
-
-CREATE TYPE VERIFICATION_TIME AS ENUM(
-    'немедленно'
-    );
-
-CREATE TYPE MEAL_COLOR AS ENUM(
-    'белые'
-    );
-
-CREATE TYPE MEAL_FORM AS ENUM(
-    'круглые'
-    );
-
-CREATE TYPE MEAL_DENSITY AS ENUM(
-    'мягкие'
-    );
-
-CREATE TYPE MEAL_SIZE AS ENUM(
-    'большой'
-    );
-
-CREATE TYPE MEAL_TASTE AS ENUM(
-    'очень вкусны'
-    );
-
 CREATE TABLE IF NOT EXISTS method(
     id SERIAL NOT NULL PRIMARY KEY,
-    method_level METHOD_LEVEL,
-    method_type METHOD_TYPE,
-    method_originality METHOD_ORIGINALITY
+    method_level text NOT NULL,
+    method_type text NOT NULL,
+    method_originality text NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS human(
     id SERIAL NOT NULL PRIMARY KEY,
     method_id INT REFERENCES method(id),
     human_name text NOT NULL,
-    human_state HUMAN_STATE,
-    human_eye_direction HUMAN_EYE_DIRECTION
+    human_state text NOT NULL,
+    human_eye_direction text NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS object(
     id SERIAL NOT NULL PRIMARY KEY,
     human_id INT REFERENCES human(id),
     object_name text NOT NULL,
-    object_form OBJECT_FORM
+    object_form text NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS conclusion(
     id SERIAL NOT NULL PRIMARY KEY,
     method_id INT REFERENCES method(id),
-    conclusion_time CONCLUSION_TIME,
+    conclusion_time text NOT NULL,
     conclusion_result BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS verification(
     id SERIAL NOT NULL PRIMARY KEY,
     conclusion_id INT REFERENCES conclusion(id),
-    verification_time VERIFICATION_TIME,
+    verification_time text NOT NULL,
     verification_state BOOLEAN NOT NULL DEFAULT FALSE
 );
 
@@ -92,11 +40,11 @@ CREATE TABLE IF NOT EXISTS meal(
     id SERIAL NOT NULL PRIMARY KEY,
     conclusion_id INT REFERENCES conclusion(id),
     meal_name text NOT NULL,
-    meal_color MEAL_COLOR,
-    meal_form MEAL_FORM,
-    meal_density MEAL_DENSITY,
-    meal_size MEAL_SIZE,
-    meal_taste MEAL_TASTE
+    meal_color text NOT NULL,
+    meal_form text NOT NULL,
+    meal_density text NOT NULL,
+    meal_size text NOT NULL,
+    meal_taste text NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS disease(
